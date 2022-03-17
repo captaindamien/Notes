@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Заметка № {{note.pk}}
+{% endblock %}
+
+{% block content %}
+  <form action="." method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input type="submit" value="Сохранить изменения" class="btn btn-success">
+  </form>
+{% endblock %}

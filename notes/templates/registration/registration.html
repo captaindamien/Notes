@@ -1,18 +1,14 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
-{% block title %}
-    Create User - {{ block.super }}
-{% endblock %}
+{% block title %}Регистрация{% endblock %}
 
 {% block content %}
-
      <div class="login">
-
          {% if messages %}
             <ul>
                 {% for message in messages %}
-                <li>{{ message }}</li>
+                    <li>{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -30,5 +26,4 @@
              </table>
          </form>
      </div>
-
 {% endblock %}

@@ -2,12 +2,14 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block title %}Создание заметки{% endblock %}
+
 {% block content %}
-<form method="post">
-  {% csrf_token %}
-  {{ form|crispy }}
-  {{ form.media }}
-  <button type="submit" class="btn btn-success"><img src="{% static 'img/save.png' %}" style="max-width: 20px;" alt="">
-    Создать заметку</button>
-</form>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        {{ form.media }}
+        <button type="submit" class="btn btn-success"><img src="{% static 'img/save.png' %}" style="max-width: 20px;" alt="">
+        Создать заметку</button>
+    </form>
 {% endblock %}

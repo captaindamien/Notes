@@ -4,19 +4,21 @@
 {% block title %}Ваши заметки{% endblock %}
 
 {% block messages %}
-    {% if messages %}
-        {% for message in messages %}
-            <p class="alert alert-success alert-dismissible fade show text-center" role="alert">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
+{% if messages %}
+{% for message in messages %}
+<p class="alert alert-success alert-dismissible fade show text-center" role="alert">{{ message }}</p>
+{% endfor %}
+{% endif %}
 {% endblock %}
 
 {% block content %}
-    <!--    вкладки на главной-->
-    <a href="{% url 'add_note' %}" class="btn btn-success mb-3"><img src="{% static 'img/new.png' %}" style="max-width: 20px;" alt=""> Новая заметка</a>
+<a href="{% url 'add_note' %}" class="btn btn-success mb-3"><img src="{% static 'img/new.png' %}"
+        style="max-width: 20px;" alt=""> Новая заметка</a>
+<hr class="mt-1 mb-0">
+{% include 'includes/pagination.html' with page=page_object %}
+<div>
     <div>
-        <div>
-            {% include 'includes/table.html' with notes=creator_notes %}
-        </div>
+        {% include 'includes/table.html' with notes=page_object %}
     </div>
+</div>
 {% endblock %}

@@ -1,9 +1,11 @@
-from django.forms import ModelForm, DateInput
-from notes.models import Note
 from django import forms
+from notes.models import Note
+from ckeditor.widgets import CKEditorWidget
 
 
-class NoteForm(ModelForm):
+class NoteForm(forms.ModelForm):
+    note = forms.CharField(widget=CKEditorWidget())
+
     class Meta:
         model = Note
         fields = [

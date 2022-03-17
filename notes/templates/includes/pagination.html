@@ -1,0 +1,19 @@
+<div class="text-center align-middle">
+    {% if page %}
+    {% if page.has_previous %}
+    <a href="?page={{ page.previous_page_number }}"
+        style="text-decoration: none; color: rgb(42, 151, 66); font-weight: 700;">сюда</a>
+    {% else %}
+    <a style="opacity: 0.5;">сюда</a>
+    {% endif %}
+    <span>
+        стр. {{ page.number }} из {{ page.paginator.num_pages }}
+    </span>
+    {% if page.has_next %}
+    <a href="?page={{ page.next_page_number }}"
+        style="text-decoration: none; color: rgb(42, 151, 66); font-weight: 700;">туда</a>
+    {% else %}
+    <a style="opacity: 0.5;">туда</a>
+    {% endif %}
+    {% endif %}
+</div>

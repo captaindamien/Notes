@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  Вход
+{% endblock %}
+
+{% block content %}
+  {% if form.errors %}
+    <p class="log_text">Введен неправильный логин или пароль</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p class="log_text">У вас нет доступа к этой странице</p>
+    {% else %}
+      <p class="log_text">Пожалуйста авторизуйтесь</p>
+    {% endif %}
+  {% endif %}
+
+  <form method="post" action="{% url 'login' %}" class="exp_form">
+    {% csrf_token %}
+      {{ form.username|as_crispy_field }}
+      {{ form.password|as_crispy_field }}
+    <button type="submit" class="btn btn-success">Вход</button>
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+
+  <p>Нет учетной записи? <a href="{% url 'registration' %}">Зарегистрируйтесь</a></p>
+{% endblock %}
